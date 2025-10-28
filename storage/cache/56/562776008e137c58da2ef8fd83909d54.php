@@ -170,7 +170,7 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
         showToast('Login successful! Redirecting...', 'success');
         setTimeout(() => window.location.href = '/dashboard', 1000);
     } else {
-        showToast('Invalid email or password. make use of the test mail', 'error');
+        showToast('Invalid email or password. Make use of the test mail', 'error');
     }
 });
 </script>
@@ -303,7 +303,7 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
         showToast('Login successful! Redirecting...', 'success');
         setTimeout(() => window.location.href = '/dashboard', 1000);
     } else {
-        showToast('Invalid email or password. make use of the test mail', 'error');
+        showToast('Invalid email or password. Make use of the test mail', 'error');
     }
 });
 </script>

@@ -38,18 +38,18 @@ class __TwigTemplate_d2c11dec584ab3ec295f9ec79f2f1981 extends Template
 
     protected function doGetParent(array $context): bool|string|Template|TemplateWrapper
     {
-        // line 2
+        // line 1
         return "base.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        $this->parent = $this->load("base.twig", 2);
+        $this->parent = $this->load("base.twig", 1);
         yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 4
+    // line 3
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -60,16 +60,16 @@ class __TwigTemplate_d2c11dec584ab3ec295f9ec79f2f1981 extends Template
         yield from [];
     }
 
-    // line 6
+    // line 5
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_styles(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 7
+        // line 6
         yield "<style>
-/* Enhanced Wavy Hero with SVG */
+
 .wavy-hero {
     position: relative;
     background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
@@ -90,7 +90,6 @@ class __TwigTemplate_d2c11dec584ab3ec295f9ec79f2f1981 extends Template
     z-index: 1;
 }
 
-/* Decorative Circles */
 .circle-deco-1 {
     position: absolute;
     width: 380px;
@@ -102,7 +101,6 @@ class __TwigTemplate_d2c11dec584ab3ec295f9ec79f2f1981 extends Template
     z-index: 0;
     pointer-events: none;
 }
-
 .circle-deco-2 {
     position: absolute;
     width: 280px;
@@ -114,7 +112,6 @@ class __TwigTemplate_d2c11dec584ab3ec295f9ec79f2f1981 extends Template
     z-index: 0;
     pointer-events: none;
 }
-
 .circle-deco-3 {
     position: absolute;
     width: 180px;
@@ -127,25 +124,28 @@ class __TwigTemplate_d2c11dec584ab3ec295f9ec79f2f1981 extends Template
     pointer-events: none;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
     .circle-deco-1 { width: 200px; height: 200px; top: -80px; right: -40px; }
     .circle-deco-2 { width: 150px; height: 150px; left: -60px; }
     .circle-deco-3 { display: none; }
 }
+
+/* Status colour helpers (used in feature icons) */
+.text-status-open      { color: #22c55e; }   /* green */
+.text-status-progress { color: #f59e0b; }   /* amber */
 </style>
 ";
         yield from [];
     }
 
-    // line 75
+    // line 74
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_body(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 76
+        // line 75
         yield "<main id=\"main\" class=\"flex-1\">
 
     <!-- HERO SECTION -->
@@ -156,8 +156,17 @@ class __TwigTemplate_d2c11dec584ab3ec295f9ec79f2f1981 extends Template
                     Welcome to <span class=\"text-yellow-300\">TicketFlow</span>
                 </h1>
                 <p class=\"mt-3 text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto opacity-90\">
-                    A modern, secure, and lightning-fast ticket management system built for teams.
+                    A modern, secure, and lightning‑fast ticket management system built for teams.
                 </p>
+
+                <!-- Built‑with Twig badge -->
+                <p class=\"mt-4 text-sm opacity-80\">
+                    <span class=\"inline-flex items-center gap-1 bg-white/20 rounded-full px-3 py-1\">
+                        <svg class=\"w-4 h-4\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2L2 12h3v8h14v-8h3L12 2z\"/></svg>
+                        Built with <strong>Twig</strong> Framework
+                    </span>
+                </p>
+
                 <div class=\"mt-10 flex flex-col sm:flex-row gap-4 justify-center\">
                     <a href=\"/auth/login\"
                        class=\"inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-semibold rounded-lg text-blue-600 bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all\">
@@ -205,7 +214,7 @@ class __TwigTemplate_d2c11dec584ab3ec295f9ec79f2f1981 extends Template
                         </svg>
                     </div>
                     <h3 class=\"text-xl font-semibold text-gray-900 mb-2\">Secure by Default</h3>
-                    <p class=\"text-gray-600\">Session-based auth with protected routes and validation.</p>
+                    <p class=\"text-gray-600\">Session‑based auth with protected routes and validation.</p>
                 </div>
 
                 <!-- Feature 3 -->
@@ -226,7 +235,7 @@ class __TwigTemplate_d2c11dec584ab3ec295f9ec79f2f1981 extends Template
     <footer class=\"bg-gray-900 text-white py-10\">
         <div class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center\">
             <p class=\"text-sm\">&copy; 2025 <span class=\"font-semibold\">TicketFlow</span>. All rights reserved.</p>
-            <p class=\"mt-2 text-xs text-gray-400\">Built with love for developers, by developers.</p>
+            <p class=\"mt-2 text-xs text-gray-400\">Built with love for HNG, by Joshua.</p>
         </div>
     </footer>
 </main>
@@ -255,19 +264,18 @@ class __TwigTemplate_d2c11dec584ab3ec295f9ec79f2f1981 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  149 => 76,  142 => 75,  71 => 7,  64 => 6,  53 => 4,  42 => 2,);
+        return array (  149 => 75,  142 => 74,  71 => 6,  64 => 5,  53 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
     {
-        return new Source("{# templates/landing.twig #}
-{% extends \"base.twig\" %}
+        return new Source("{% extends \"base.twig\" %}
 
 {% block title %}TicketFlow - Manage Tickets with Ease{% endblock %}
 
 {% block styles %}
 <style>
-/* Enhanced Wavy Hero with SVG */
+
 .wavy-hero {
     position: relative;
     background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
@@ -288,7 +296,6 @@ class __TwigTemplate_d2c11dec584ab3ec295f9ec79f2f1981 extends Template
     z-index: 1;
 }
 
-/* Decorative Circles */
 .circle-deco-1 {
     position: absolute;
     width: 380px;
@@ -300,7 +307,6 @@ class __TwigTemplate_d2c11dec584ab3ec295f9ec79f2f1981 extends Template
     z-index: 0;
     pointer-events: none;
 }
-
 .circle-deco-2 {
     position: absolute;
     width: 280px;
@@ -312,7 +318,6 @@ class __TwigTemplate_d2c11dec584ab3ec295f9ec79f2f1981 extends Template
     z-index: 0;
     pointer-events: none;
 }
-
 .circle-deco-3 {
     position: absolute;
     width: 180px;
@@ -325,12 +330,15 @@ class __TwigTemplate_d2c11dec584ab3ec295f9ec79f2f1981 extends Template
     pointer-events: none;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
     .circle-deco-1 { width: 200px; height: 200px; top: -80px; right: -40px; }
     .circle-deco-2 { width: 150px; height: 150px; left: -60px; }
     .circle-deco-3 { display: none; }
 }
+
+/* Status colour helpers (used in feature icons) */
+.text-status-open      { color: #22c55e; }   /* green */
+.text-status-progress { color: #f59e0b; }   /* amber */
 </style>
 {% endblock %}
 
@@ -345,8 +353,17 @@ class __TwigTemplate_d2c11dec584ab3ec295f9ec79f2f1981 extends Template
                     Welcome to <span class=\"text-yellow-300\">TicketFlow</span>
                 </h1>
                 <p class=\"mt-3 text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto opacity-90\">
-                    A modern, secure, and lightning-fast ticket management system built for teams.
+                    A modern, secure, and lightning‑fast ticket management system built for teams.
                 </p>
+
+                <!-- Built‑with Twig badge -->
+                <p class=\"mt-4 text-sm opacity-80\">
+                    <span class=\"inline-flex items-center gap-1 bg-white/20 rounded-full px-3 py-1\">
+                        <svg class=\"w-4 h-4\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 2L2 12h3v8h14v-8h3L12 2z\"/></svg>
+                        Built with <strong>Twig</strong> Framework
+                    </span>
+                </p>
+
                 <div class=\"mt-10 flex flex-col sm:flex-row gap-4 justify-center\">
                     <a href=\"/auth/login\"
                        class=\"inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-semibold rounded-lg text-blue-600 bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all\">
@@ -394,7 +411,7 @@ class __TwigTemplate_d2c11dec584ab3ec295f9ec79f2f1981 extends Template
                         </svg>
                     </div>
                     <h3 class=\"text-xl font-semibold text-gray-900 mb-2\">Secure by Default</h3>
-                    <p class=\"text-gray-600\">Session-based auth with protected routes and validation.</p>
+                    <p class=\"text-gray-600\">Session‑based auth with protected routes and validation.</p>
                 </div>
 
                 <!-- Feature 3 -->
@@ -415,7 +432,7 @@ class __TwigTemplate_d2c11dec584ab3ec295f9ec79f2f1981 extends Template
     <footer class=\"bg-gray-900 text-white py-10\">
         <div class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center\">
             <p class=\"text-sm\">&copy; 2025 <span class=\"font-semibold\">TicketFlow</span>. All rights reserved.</p>
-            <p class=\"mt-2 text-xs text-gray-400\">Built with love for developers, by developers.</p>
+            <p class=\"mt-2 text-xs text-gray-400\">Built with love for HNG, by Joshua.</p>
         </div>
     </footer>
 </main>
