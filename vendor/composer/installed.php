@@ -3,7 +3,7 @@
         'name' => 'joshuacomputer/twig-ticket-app',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '3e75644a60b62989f404850495faff294d6ca0d0',
+        'reference' => '93c0b668b3642c55dc9f10a89367022baccad87f',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'joshuacomputer/twig-ticket-app' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '3e75644a60b62989f404850495faff294d6ca0d0',
+            'reference' => '93c0b668b3642c55dc9f10a89367022baccad87f',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
