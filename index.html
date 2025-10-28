@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TicketFlow - Twig</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          maxWidth: { '7xl': '1440px' }
+        }
+      }
+    }
+  </script>
+  <!-- Toast -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</head>
+<body class="bg-gray-50">
+
+<!-- ====== LANDING PAGE ====== -->
+<div id="landing" class="min-h-screen flex flex-col">
+  <section class="relative bg-gradient-to-br from-blue-500 to-purple-600 text-white py-20 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 text-center relative z-20">
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-4">
+        Welcome to <span class="text-yellow-300">TicketFlow</span>
+      </h1>
+      <p class="text-xl md:text-2xl mb-8">Manage tickets with ease.</p>
+      <div class="space-x-4">
+        <button onclick="showPage('login')" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition shadow-md">
+          Login
+        </button>
+        <button onclick="showPage('signup')" class="border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition shadow-md">
+          Get Started
+        </button>
+      </div>
+    </div>
+
+    <!-- WAVY SVG -->
+    <svg class="absolute bottom-0 left-0 w-full h-40 transform translate-y-8" viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="#f9fafb" d="M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,160C672,128,768,96,864,112C960,128,1056,192,1152,208C1248,224,1344,192,1392,176L1440,160L1440,320L0,320Z"/>
+    </svg>
+
+    <!-- CIRCLES -->
+    <div class="absolute top-[-150px] right-[-80px] w-96 h-96 bg-green-500/15 rounded-full"></div>
+    <div class="absolute bottom-10 left-[-100px] w-72 h-72 bg-amber-500/20 rounded-full"></div>
+    <div class="absolute top-40 right-40 w-48 h-48 bg-purple-500/10 rounded-full"></div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Why TicketFlow?</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+          <div class="w-12 h-12 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center">Fast</div>
+          <h3 class="text-xl font-semibold mb-2">Blazing Fast</h3>
+          <p>Create tickets in seconds.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+          <div class="w-12 h-12 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">Secure</div>
+          <h3 class="text-xl font-semibold mb-2">Secure</h3>
+          <p>Your data, protected.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+          <div class="w-12 h-12 bg-purple-100 rounded-full mx-auto mb-4 flex items-center justify-center">Easy</div>
+          <h3 class="text-xl font-semibold mb-2">Simple</h3>
+          <p>No complexity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-gray-900 text-white py-8 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p>© 2025 TicketFlow. All rights reserved.</p>
+    </div>
+  </footer>
+</div>
+
+<!-- ====== LOGIN PAGE ====== -->
+<div id="login" class="hidden min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
+  <div class="max-w-md w-full bg-white p-8 rounded-xl shadow-lg">
+    <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">Sign In</h2>
+    <form onsubmit="handleLogin(event)" class="space-y-5">
+      <input id="login-email" type="email" placeholder="Email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition"/>
+      <input id="login-password" type="password" placeholder="Password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition"/>
+      <p id="login-error" class="text-red-600 text-sm text-center hidden"></p>
+      <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md">
+        Sign In
+      </button>
+    </form>
+    <div class="mt-6 text-center text-sm text-gray-600">
+      <p>Test: test@example.com / password123</p>
+    </div>
+    <p class="mt-4 text-center text-sm">
+      No account? <button onclick="showPage('signup')" class="text-blue-600 hover:underline font-medium">Sign Up</button>
+    </p>
+  </div>
+</div>
+
+<!-- ====== SIGNUP PAGE ====== -->
+<div id="signup" class="hidden min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-blue-50 py-12 px-4">
+  <div class="max-w-md w-full bg-white p-8 rounded-xl shadow-xl border-t-4 border-green-500">
+    <div class="text-center mb-6">
+      <div class="w-16 h-16 bg-green-100 rounded-full mx-auto flex items-center justify-center mb-3">
+        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H9v-1c0-1.657-1.343-3-3-3s-3 1.343-3 3v1m6-6c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z" />
+        </svg>
+      </div>
+      <h2 class="text-3xl font-bold text-gray-800">Join TicketFlow</h2>
+    </div>
+    <form onsubmit="handleSignup(event)" class="space-y-5">
+      <input id="signup-email" type="email" placeholder="your@email.com" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 transition"/>
+      <input id="signup-password" type="password" placeholder="6+ chars" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 transition"/>
+      <p id="signup-error" class="text-red-600 text-sm text-center hidden"></p>
+      <button type="submit" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-lg font-semibold hover:from-green-600 hover:to-emerald-700 transition shadow-lg">
+        Create Account
+      </button>
+    </form>
+    <p class="mt-6 text-center text-sm text-gray-600">
+      Have account? <button onclick="showPage('login')" class="text-green-600 hover:underline font-semibold">Sign In</button>
+    </p>
+  </div>
+</div>
+
+<!-- ====== DASHBOARD ====== -->
+<div id="dashboard" class="hidden min-h-screen bg-gray-50">
+  <header class="bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-gray-800">Dashboard</h1>
+      <button onclick="logout()" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition shadow-sm">
+        Logout
+      </button>
+    </div>
+  </header>
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-6" id="stats"></div>
+      <div class="mt-10 text-center">
+        <button onclick="showPage('tickets')" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md">
+          View All Tickets
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ====== TICKETS LIST ====== -->
+<div id="tickets" class="hidden min-h-screen bg-gray-50">
+  <header class="bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-gray-800">Tickets</h1>
+      <div class="flex gap-2">
+        <button onclick="showPage('create-ticket')" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition shadow-sm">
+          + New Ticket
+        </button>
+        <button onclick="logout()" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition shadow-sm">
+          Logout
+        </button>
+      </div>
+    </div>
+  </header>
+  <section class="py-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div id="ticket-list"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ====== CREATE TICKET ====== -->
+<div id="create-ticket" class="hidden min-h-screen bg-gray-50 py-12">
+  <div class="max-w-3xl mx-auto px-4">
+    <div class="bg-white p-8 rounded-xl shadow-lg">
+      <h1 class="text-2xl font-bold text-gray-800 mb-6">Create New Ticket</h1>
+      <form onsubmit="createTicket(event)" class="space-y-6">
+        <input id="new-title" type="text" placeholder="Title *" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"/>
+        <select id="new-status" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+          <option value="open">Open</option>
+          <option value="in_progress">In Progress</option>
+          <option value="closed">Closed</option>
+        </select>
+        <textarea id="new-desc" rows="4" placeholder="Description" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
+        <div class="flex gap-3">
+          <button type="submit" class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">Create</button>
+          <button type="button" onclick="showPage('tickets')" class="flex-1 bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300 transition">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ====== EDIT TICKET ====== -->
+<div id="edit-ticket" class="hidden min-h-screen bg-gray-50 py-12">
+  <div class="max-w-3xl mx-auto px-4">
+    <div class="bg-white p-8 rounded-xl shadow-lg">
+      <h1 class="text-2xl font-bold text-gray-800 mb-6">Edit Ticket</h1>
+      <form onsubmit="updateTicket(event)" class="space-y-6">
+        <input id="edit-title" type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"/>
+        <select id="edit-status" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+          <option value="open">Open</option>
+          <option value="in_progress">In Progress</option>
+          <option value="closed">Closed</option>
+        </select>
+        <textarea id="edit-desc" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
+        <input id="edit-id" type="hidden"/>
+        <div class="flex gap-3">
+          <button type="submit" class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">Update</button>
+          <button type="button" onclick="showPage('tickets')" class="flex-1 bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300 transition">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  const pages = ['landing', 'login', 'signup', 'dashboard', 'tickets', 'create-ticket', 'edit-ticket'];
+  let currentEditId = null;
+
+  function showPage(page) {
+    pages.forEach(p => document.getElementById(p).classList.add('hidden'));
+    document.getElementById(page).classList.remove('hidden');
+    if (page === 'dashboard') loadDashboard();
+    if (page === 'tickets') loadTickets();
+  }
+
+  function checkAuth() {
+    const session = localStorage.getItem('ticketapp_session');
+    if (!session && !['landing', 'login', 'signup'].includes(location.hash.slice(1) || 'landing')) {
+      showPage('login');
+    }
+  }
+
+  function handleLogin(e) {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+    if (email === 'test@example.com' && password === 'password123') {
+      localStorage.setItem('ticketapp_session', JSON.stringify({ email, expires: Date.now() + 3600000 }));
+      Toastify({ text: "Welcome back!", backgroundColor: "#10b981" }).showToast();
+      showPage('dashboard');
+    } else {
+      document.getElementById('login-error').textContent = 'Invalid credentials';
+      document.getElementById('login-error').classList.remove('hidden');
+    }
+  }
+
+  function handleSignup(e) {
+    e.preventDefault();
+    const password = document.getElementById('signup-password').value;
+    if (password.length < 6) {
+      document.getElementById('signup-error').textContent = 'Password too short';
+      document.getElementById('signup-error').classList.remove('hidden');
+      return;
+    }
+    localStorage.setItem('ticketapp_session', JSON.stringify({ email: document.getElementById('signup-email').value, expires: Date.now() + 3600000 }));
+    Toastify({ text: "Account created!", backgroundColor: "#10b981" }).showToast();
+    showPage('dashboard');
+  }
+
+  function logout() {
+    localStorage.removeItem('ticketapp_session');
+    showPage('landing');
+  }
+
+  function loadDashboard() {
+    const tickets = JSON.parse(localStorage.getItem('tickets') || '[]');
+    const stats = {
+      total: tickets.length,
+      open: tickets.filter(t => t.status === 'open').length,
+      in_progress: tickets.filter(t => t.status === 'in_progress').length,
+      closed: tickets.filter(t => t.status === 'closed').length,
+    };
+    document.getElementById('stats').innerHTML = `
+      <div class="bg-white p-6 rounded-xl shadow-lg text-center"><h3 class="text-lg font-semibold text-gray-600">Total</h3><p class="text-3xl font-bold text-gray-800 mt-2">${stats.total}</p></div>
+      <div class="bg-white p-6 rounded-xl shadow-lg text-center"><h3 class="text-lg font-semibold text-green-600">Open</h3><p class="text-3xl font-bold text-green-600 mt-2">${stats.open}</p></div>
+      <div class="bg-white p-6 rounded-xl shadow-lg text-center"><h3 class="text-lg font-semibold text-amber-600">In Progress</h3><p class="text-3xl font-bold text-amber-600 mt-2">${stats.in_progress}</p></div>
+      <div class="bg-white p-6 rounded-xl shadow-lg text-center"><h3 class="text-lg font-semibold text-gray-600">Closed</h3><p class="text-3xl font-bold text-gray-600 mt-2">${stats.closed}</p></div>
+    `;
+  }
+
+  function loadTickets() {
+    const tickets = JSON.parse(localStorage.getItem('tickets') || '[]');
+    const container = document.getElementById('ticket-list');
+    if (tickets.length === 0) {
+      container.innerHTML = `<p class="text-center text-gray-500 py-12 text-xl">No tickets yet. <button onclick="showPage('create-ticket')" class="text-blue-600 hover:underline">Create one</button></p>`;
+      return;
+    }
+    container.innerHTML = tickets.map(t => `
+      <div class="bg-white p-6 rounded-xl shadow-lg mb-4">
+        <div class="flex justify-between items-start mb-3">
+          <h3 class="text-lg font-semibold text-gray-800">${t.title}</h3>
+          <span class="px-3 py-1 rounded-full text-xs font-medium ${t.status === 'open' ? 'bg-green-100 text-green-800' : t.status === 'in_progress' ? 'bg-amber-100 text-amber-800' : 'bg-gray-100 text-gray-800'}">
+            ${t.status.replace('_', ' ').toUpperCase()}
+          </span>
+        </div>
+        <p class="text-gray-600 text-sm mb-4">${t.description || 'No description'}</p>
+        <div class="flex gap-2">
+          <button onclick="editTicket('${t.id}')" class="flex-1 bg-blue-100 text-blue-700 py-2 rounded text-sm hover:bg-blue-200">Edit</button>
+          <button onclick="deleteTicket('${t.id}')" class="flex-1 bg-red-100 text-red-700 py-2 rounded text-sm hover:bg-red-200">Delete</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function createTicket(e) {
+    e.preventDefault();
+    const title = document.getElementById('new-title').value.trim();
+    if (!title) return Toastify({ text: "Title required", backgroundColor: "#ef4444" }).showToast();
+    const tickets = JSON.parse(localStorage.getItem('tickets') || '[]');
+    tickets.push({
+      id: Date.now().toString(),
+      title,
+      status: document.getElementById('new-status').value,
+      description: document.getElementById('new-desc').value
+    });
+    localStorage.setItem('tickets', JSON.stringify(tickets));
+    Toastify({ text: "Ticket created!", backgroundColor: "#10b981" }).showToast();
+    showPage('tickets');
+  }
+
+  function editTicket(id) {
+    const tickets = JSON.parse(localStorage.getItem('tickets') || '[]');
+    const ticket = tickets.find(t => t.id === id);
+    if (!ticket) return;
+    currentEditId = id;
+    document.getElementById('edit-title').value = ticket.title;
+    document.getElementById('edit-status').value = ticket.status;
+    document.getElementById('edit-desc').value = ticket.description || '';
+    document.getElementById('edit-id').value = id;
+    showPage('edit-ticket');
+  }
+
+  function updateTicket(e) {
+    e.preventDefault();
+    const title = document.getElementById('edit-title').value.trim();
+    if (!title) return Toastify({ text: "Title required", backgroundColor: "#ef4444" }).showToast();
+    const tickets = JSON.parse(localStorage.getItem('tickets') || '[]');
+    const index = tickets.findIndex(t => t.id === currentEditId);
+    if (index !== -1) {
+      tickets[index] = {
+        ...tickets[index],
+        title,
+        status: document.getElementById('edit-status').value,
+        description: document.getElementById('edit-desc').value
+      };
+      localStorage.setItem('tickets', JSON.stringify(tickets));
+      Toastify({ text: "Ticket updated!", backgroundColor: "#3b82f6" }).showToast();
+      showPage('tickets');
+    }
+  }
+
+  function deleteTicket(id) {
+    if (!confirm('Delete this ticket?')) return;
+    const tickets = JSON.parse(localStorage.getItem('tickets') || '[]').filter(t => t.id !== id);
+    localStorage.setItem('tickets', JSON.stringify(tickets));
+    Toastify({ text: "Ticket deleted!", backgroundColor: "#ef4444" }).showToast();
+    loadTickets();
+  }
+
+  // Init
+  window.onload = () => {
+    checkAuth();
+    showPage('landing');
+  };
+</script>
+</body>
+</html>
