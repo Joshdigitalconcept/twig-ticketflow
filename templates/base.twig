@@ -1,0 +1,49 @@
+{# templates/base.twig #}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% block title %}TicketFlow{% endblock %}</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    maxWidth: {
+                        '7xl': '1440px',
+                    },
+                    colors: {
+                        'status-open': '#10b981',
+                        'status-progress': '#f59e0b',
+                        'status-closed': '#6b7280',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    {% block styles %}{% endblock %}
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans min-h-screen flex flex-col">
+
+    <!-- Skip to main content -->
+    <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
+
+    {% block body %}
+    {% endblock %}
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="fixed bottom-4 right-4 z-50 space-y-2"></div>
+
+    <!-- Scripts -->
+    <script src="/assets/js/toast.js"></script>
+    <script src="/assets/js/app.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
